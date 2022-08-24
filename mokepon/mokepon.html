@@ -35,8 +35,8 @@
     </section>
     <section id="seleccionar-ataque">
       <h2>Elige tu ataque:</h2>
-      <p>Tu mascota <span id="mascota-jugador"></span> tiene <span>3</span> vidas</p>
-      <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span>3</span> vidas</p>
+      <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p>
+      <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
       <p>
         <button id="boton-fuego">Fuego 🔥</button>
         <button id="boton-agua">Agua 🌊</button>
@@ -44,13 +44,9 @@
       </p>
     </section>
     <section id="mensajes">
-      <p>
-        Tu mascota atacó con FUEGO, la mascota del enemigo atacó con TIERRA -
-        GANASTE 🎉
-      </p>
     </section>
 
-    <section id="reiniciar">
+    <section id="reiniciar" style="display: none;">
       <button id="boton-reiniciar">Reiniciar</button>
     </section>
   </body>
