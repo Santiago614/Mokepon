@@ -24,17 +24,22 @@ const sectionMensajes = document.getElementById("resultado");
 const ataquesDelJugador = document.getElementById("ataques-del-jugador");
 const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
 
+const contenedorTarjetas = document.getElementById("contenedor-tarjetas");
+
 let ataqueJugador,
   ataqueEnemigo,
   resultado,
+  opcionDeMokepones,
   vidasJugador = 3,
-  vidasEnemigo = 3;
+  vidasEnemigo = 3,
+  mokepones = [];
 
 class Mokepon {
   constructor(nombre, foto, vida) {
     this.nombre = nombre;
     this.foto = foto;
     this.vida = vida;
+    this.ataques = [];
   }
 }
 
@@ -56,8 +61,50 @@ let ratigueya = new Mokepon(
   3
 );
 
+//Push -> Insertar datos en el arreglo
+hipodoge.ataques.push(
+  { nombre: "🌊", id: "boton-agua" },
+  { nombre: "🌊", id: "boton-agua" },
+  { nombre: "🌊", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🎄", id: "boton-tierra" }
+);
+
+capipepo.ataques.push(
+  { nombre: "🎄", id: "boton-tierra" },
+  { nombre: "🎄", id: "boton-tierra" },
+  { nombre: "🎄", id: "boton-tierra" },
+  { nombre: "🌊", id: "boton-agua" },
+  { nombre: "🔥", id: "boton-fuego" }
+);
+
+ratigueya.ataques.push(
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🔥", id: "boton-fuego" },
+  { nombre: "🌊", id: "boton-agua" },
+  { nombre: "🎄", id: "boton-tierra" }
+);
+
+mokepones.push(hipodoge, capipepo, ratigueya);
+
 function iniciarJuego(params) {
   sectionSelecionarAtaque.style.display = "none";
+
+  mokepones.forEach((mokepon) => {
+    opcionDeMokepones = `
+        <input type="radio" name="mascota" id="${mokepon.nombre}" />
+        <label class="tarjeta-de-mokepon" for="${mokepon.nombre}">
+          <p>${mokepon.nombre}</p>
+          <img
+          src="${mokepon.foto}"
+          alt="${mokepon.nombre}"
+          /> </label
+        ><br />
+    `;
+    contenedorTarjetas.innerHTML += opcionDeMokepones;
+  });
+
   botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
   botonFuego.addEventListener("click", ataqueFuego);
   botonAgua.addEventListener("click", ataqueAgua);
